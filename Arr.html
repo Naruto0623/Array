@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  //原数组
+  var arr1 = [
+    {
+      name: 'name1',
+      id: 'id1'
+    },
+    {
+      name: 'name2',
+      id: 'id2'
+    },
+    {
+      name: 'name1',
+      id: 'id1'
+    },
+    {
+      name: 'name2',
+      id: 'id2'
+    },
+    {
+      name: 'name3',
+      id: 'id3'
+    },
+    {
+      name: 'name4',
+      id: 'id4'
+    }
+  ];
+  //相减数组
+  var arr2 = [
+    {
+      name: 'name1',
+      id: 'id1'
+    },
+    {
+      name: 'name2',
+      id: 'id2'
+    },
+    {
+      name: 'name3',
+      id: 'id3'
+    }
+  ];
+
+  //数组去重
+  function arrRepetition( arr ){
+    for (var i = 0; i < arr.length - 1; i++) {
+      for (var j = i + 1; j < arr.length; j++) {
+        if (arr[ i ].id == arr[ j ].id) {
+          arr.splice(j, 1);
+          j--;
+        }
+      }
+    }
+    return arr;
+  }
+
+  //数组相减
+  function arrFilter( a, b ){
+    for (var i = 0; i < b.length; i++) {
+      for (var j = 0; j < a.length; j++) {
+        if (a[ j ].id == b[ i ].id) {
+          a.splice(j, 1);
+          j = j--;
+        }
+      }
+    }
+    return a;
+  }
+
+  var newArr = arrRepetition(arr1);
+  console.dir(newArr);
+  var newArr2 = arrFilter(newArr, arr2);
+  console.dir(newArr2);
+</script>
+</body>
+</html>
